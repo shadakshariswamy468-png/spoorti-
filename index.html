@@ -1,0 +1,42 @@
+https://cdn.tailwindcss.com<!DOCTYPE html>
+<html>
+<head>
+<title>Spoorti's Student App</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-pink-100 min-h-screen p-4">
+
+<div class="max-w-md mx-auto bg-white rounded-3xl shadow-xl p-6 mt-6">
+<h1 class="text-3xl font-bold text-center text-purple-600">🎓 Spoorti's Student App</h1>
+<p class="text-center text-gray-500 mb-4">Made by Spoorti ❤️</p>
+
+<input id="name" placeholder="Enter Student Name" class="w-full border-2 border-purple-200 rounded-xl p-3 mb-3">
+<input id="marks" type="number" placeholder="Enter Marks" class="w-full border-2 border-purple-200 rounded-xl p-3 mb-3">
+
+<button onclick="addStudent()" class="w-full bg-purple-600 text-white font-bold py-3 rounded-xl">Add Student ➕</button>
+
+<h2 class="text-xl font-bold mt-6 mb-2">View Students 📋</h2>
+<div id="list" class="space-y-2"></div>
+</div>
+
+<script>
+let students = [];
+function addStudent(){
+  let n = document.getElementById('name').value;
+  let m = document.getElementById('marks').value;
+  if(n==""){ alert("Please enter name!"); return; }
+  students.push(n + " - " + m + " Marks");
+  document.getElementById('name').value="";
+  document.getElementById('marks').value="";
+  show();
+}
+function show(){
+  let html = "";
+  students.forEach(s => {
+    html += `<div class="bg-purple-100 p-3 rounded-xl">⭐ ${s}</div>`;
+  });
+  document.getElementById('list').innerHTML = html;
+}
+</script>
+</body>
+</html>
